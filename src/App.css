@@ -31,8 +31,9 @@
     transform: rotate(360deg);
   }
 }
-
-
+html {
+  overflow: hidden;
+}
 .inputArea {
   background: none; 
   border: none; 
