@@ -1,26 +1,54 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import sha256 from 'sha256';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+class App extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {inputText: ''};
+  }
+
+  render () {
+    return (
+      <div className="App">
+        <span className="inputPrompt">Type Something:</span> 
+          <input 
+            onChange={(e) => {this.handleChange(e)}} 
+            ref={(input)=> this.textInput = input}
+            autoComplete="off" 
+            className="inputArea"
+          />
+        <span 
+          className="output"
         >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+        { this.state.output }
+        </span>
+      </div>
+    );
+  }
+
+  componentDidMount ( props ) { 
+
+    console.log('component mounted!')
+
+  }
+
+  handleChange () {
+
+    var text = this.textInput.value,
+        hash = sha256(text);
+
+    console.log('keyUp!', text, hash)
+    this.setState({
+      input: text, 
+      output: hash,
+    });
+
+  }
+
+  
 }
 
 export default App;
