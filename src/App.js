@@ -7,7 +7,10 @@ class App extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {inputText: ''};
+    this.state = {
+      input: 'Click Here',
+      output: 'Your output will appear here.'
+    };
   }
 
   render () {
@@ -17,8 +20,10 @@ class App extends React.Component {
           <input 
             onChange={(e) => {this.handleChange(e)}} 
             ref={(input)=> this.textInput = input}
+            value={this.state.input}
             autoComplete="off" 
             className="inputArea"
+            onClick={() => {this.clearInput()}}
           />
         <span 
           className="output"
@@ -29,8 +34,15 @@ class App extends React.Component {
     );
   }
 
-  componentDidMount ( props ) { 
+  clearInput () {
+    this.setState({
+      input: "", 
+      output: "Start typing...",
+    });  
+  }
 
+  componentDidMount ( props ) { 
+    this.textInput.focus();
     console.log('component mounted!')
 
   }
@@ -38,12 +50,11 @@ class App extends React.Component {
   handleChange () {
 
     var text = this.textInput.value,
-        hash = sha256(text);
+        output = sha256(text);
 
-    console.log('keyUp!', text, hash)
     this.setState({
       input: text, 
-      output: hash,
+      output: output,
     });
 
   }

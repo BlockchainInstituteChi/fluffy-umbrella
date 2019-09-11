@@ -31,3 +31,34 @@
     transform: rotate(360deg);
   }
 }
+
+
+.inputArea {
+  background: none; 
+  border: none; 
+  color: inherit; 
+  flex-grow: 1; 
+  font-family: inherit; 
+  font-size: inherit; 
+  padding: 0px;
+}
+.inputPrompt {
+  margin-right: 5px; 
+  color: rgb(189, 8, 28);
+}
+input:focus { 
+  outline: none; 
+}
+.output { 
+  display: block; 
+  color: white;
+}
+.App {
+  text-align: left !important; 
+  line-height: 1.5em; 
+  padding: 10px; 
+  background: black;
+  color: green;
+  min-height: 100vh;
+  min-width: 100vw;
+}
