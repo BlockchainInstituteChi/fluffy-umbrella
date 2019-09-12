@@ -42,6 +42,8 @@ html {
   font-family: inherit; 
   font-size: inherit; 
   padding: 0px;
+  width: -webkit-fill-available;
+  max-width: calc(100% - 10em);
 }
 .inputPrompt {
   margin-right: 5px; 
